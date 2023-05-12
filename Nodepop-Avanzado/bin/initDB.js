@@ -2,7 +2,7 @@
 const Ad = require("../models/Ad");
 const connection = require("../lib/connectMongoose");
 
-main().catch((err) => console.log("Hubo un error", err));
+main().catch(err => console.log("Hubo un error", err));
 
 async function main() {
   // inicializo colección Ad
@@ -84,7 +84,7 @@ async function initAd() {
     },
     {
       name: "escritorio",
-      state: true ,
+      state: true,
       price: 120,
       tags: "work",
       img: "mesa",
