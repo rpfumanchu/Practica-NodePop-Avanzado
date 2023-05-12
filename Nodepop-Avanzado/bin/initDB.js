@@ -1,12 +1,20 @@
 "use strict";
-const Ad = require("../models/Ad");
+
+require("dotenv").config();
+
+const { Ad, User } = require("../models");
 const connection = require("../lib/connectMongoose");
+const ad = require("./ad");
+const users = require("./users");
 
 main().catch(err => console.log("Hubo un error", err));
 
 async function main() {
   // inicializo colección Ad
   await initAd();
+
+  // inicializamos colección de usuarios
+  await initUsers();
 
   // cierro conexión
   connection.close();
@@ -18,84 +26,43 @@ async function initAd() {
   console.log(`Eliminados ${deleted.deletedCount} anuncios.`);
 
   // crea los anuncios iniciales
-  const inserted = await Ad.insertMany([
-    {
-      name: "play 5",
-      state: true,
-      price: 659,
-      tags: "lifestyle",
-      img: "play",
-    },
-    {
-      name: "xbox",
-      state: false,
-      price: 559,
-      tags: "lifestyle",
-      img: "xbox",
-    },
-    {
-      name: "nike",
-      state: true,
-      price: 180,
-      tags: "lifestyle",
-      img: "zapas",
-    },
-    {
-      name: "silla",
-      state: false,
-      price: 400,
-      tags: ["work", "lifestyle"],
-      img: "silla",
-    },
-    {
-      name: "reloj",
-      state: false,
-      price: 500,
-      tags: "lifestyle",
-      img: "reloj",
-    },
-    {
-      name: "pc",
-      state: true,
-      price: 1500,
-      tags: ["work", "lifestyle"],
-      img: "pc",
-    },
-    {
-      name: "apple",
-      state: true,
-      price: 1100,
-      tags: "mobile",
-      img: "movil1",
-    },
-    {
-      name: "oppo",
-      state: false,
-      price: 450,
-      tags: "mobile",
-      img: "movil",
-    },
-    {
-      name: "yamaha R7",
-      state: true,
-      price: 10500,
-      tags: "motor",
-      img: "moto",
-    },
-    {
-      name: "escritorio",
-      state: true,
-      price: 120,
-      tags: "work",
-      img: "mesa",
-    },
-    {
-      name: "renault",
-      state: false,
-      price: 16000,
-      tags: "motor",
-      img: "coche",
-    },
-  ]);
+  const inserted = await Ad.insertMany(ad);
   console.log(`Creados ${inserted.length} anuncios`);
 }
+
+async function initUsers() {
+  const deleted = await User.deleteMany();
+  console.log(`Eliminados ${deleted.deletedCount} usuarios.`);
+
+  // obtener los usuarios iniciales
+  const emailAndPasswords = await getEmailAndPasswords(users);
+
+  const inserted = await User.insertMany(emailAndPasswords);
+  //console.log(users);
+  console.log(`Creados ${inserted.length} usuarios.`);
+}
+
+//   users.forEach(even => { {
+
+//     email: even.email, password: await users.hasPassword(even.password)
+//   }
+//     console.log(`Email: ${even.email}, Password: ${even.password}`);
+//   });
+
+//   console.log(`Creados ${inserted.length} usuarios.`);
+// }
+
+// users.forEach(({ email, password }) => {
+//   console.log(`Email: ${email}, Password: ${password}`);
+// });
+
+const getEmailAndPasswords = async usuarios => {
+  const emailAndPasswords = [];
+  for (const usuario of usuarios) {
+    const { email, password } = usuario;
+    const hashedPassword = await User.hashPassword(password);
+    emailAndPasswords.push({ email: email, password: hashedPassword });
+    console.log(emailAndPasswords);
+  }
+  return emailAndPasswords;
+};
