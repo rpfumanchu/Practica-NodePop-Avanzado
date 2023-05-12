@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/reset.css">
   <link rel='stylesheet' href="/stylesheets/style.css">
+  <link rel='stylesheet' href="/stylesheets/navbar.css">
   <link rel='stylesheet' href="/stylesheets/form.css">
 
   <title>
@@ -15,19 +16,17 @@
 </head>
 
 <body>
-  <% include title.ejs %>
+  <header>
+    <nav class="navbar">
+      <h1>NodePop</h1>
+      <ul class="list">
+        <li class="list-item"><a href="http://127.0.0.1:3001/filter">Fitrado y busqueda</a></li>
+        <li class="list-item"><a href="http://127.1.1.0:3001/create">Crea un anuncio</a></li>
+        <li class="list-item"><a href="http://127.1.1.0:3001/range/659">Rango de precios</a></li>
+      </ul>
+    </nav>
 
-  <div class="form">
-    <h1>Elige una opción</h1>
-    <ul>
-      <li class="links"><a class="links" href="http://127.0.0.1:3001/filter">Fitrado y busqueda</a></li>
-      <li class="links"><a class="links" href="http://127.1.1.0:3001/create">Crea un anuncio</a></li>
-      <li class="links"><a class="links" href="http://127.1.1.0:3001/range/659">Rango de precios</a></li>
-    </ul>
-  </div>
+    <% include title.ejs %>
+  </header>
 
   <% include footer.ejs %>
-
-</body>
-
-</html>
