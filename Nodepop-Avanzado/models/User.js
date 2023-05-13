@@ -10,6 +10,12 @@ const userSchema = mongoose.Schema({
 
 //NOTE Método estático
 
+userSchema.statics.usersAll = function () {
+  const query = User.find();
+  console.log(query);
+  return query;
+};
+
 userSchema.statics.hashPassword = function (rawPassword) {
   return bcrypt.hash(rawPassword, 7);
 };
@@ -22,7 +28,7 @@ userSchema.methods.comparePassword = function (rawPassword) {
 
 //NOTE Crear modelo
 
-const User = mongoose.model("Users", userSchema);
+const User = mongoose.model("User", userSchema);
 
 //NOTE Exporto el modelo
 module.exports = User;

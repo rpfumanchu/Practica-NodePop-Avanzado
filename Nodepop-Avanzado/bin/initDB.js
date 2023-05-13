@@ -38,31 +38,18 @@ async function initUsers() {
   const emailAndPasswords = await getEmailAndPasswords(users);
 
   const inserted = await User.insertMany(emailAndPasswords);
-  //console.log(users);
+
   console.log(`Creados ${inserted.length} usuarios.`);
 }
 
-//   users.forEach(even => { {
-
-//     email: even.email, password: await users.hasPassword(even.password)
-//   }
-//     console.log(`Email: ${even.email}, Password: ${even.password}`);
-//   });
-
-//   console.log(`Creados ${inserted.length} usuarios.`);
-// }
-
-// users.forEach(({ email, password }) => {
-//   console.log(`Email: ${email}, Password: ${password}`);
-// });
-
 const getEmailAndPasswords = async usuarios => {
-  const emailAndPasswords = [];
-  for (const usuario of usuarios) {
-    const { email, password } = usuario;
-    const hashedPassword = await User.hashPassword(password);
-    emailAndPasswords.push({ email: email, password: hashedPassword });
-    console.log(emailAndPasswords);
-  }
+  const emailAndPasswords = await Promise.all(
+    usuarios.map(async usuario => {
+      const { email, password } = usuario;
+      const hashedPassword = await User.hashPassword(password);
+      return { email, password: hashedPassword };
+    }),
+  );
+  console.log(emailAndPasswords);
   return emailAndPasswords;
 };
