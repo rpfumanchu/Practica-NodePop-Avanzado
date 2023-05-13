@@ -5,7 +5,11 @@ const createError = require("http-errors");
 module.exports = async (req, res, next) => {
   try {
     //DONE Recoger el jwtToken de la cabecera, o el body o la query-string
-    const jwtToken = req.get("Authorization") || req.body.jwt || req.query.jwt;
+    let jwtToken = req.get("Authorization") || req.body.jwt || req.query.jwt;
+
+    jwtToken = jwtToken.replace("Bearer ", "");
+
+    console.log("hay token");
 
     //DONE Compruebo que me lo han mandado
     if (!jwtToken) {
@@ -14,9 +18,10 @@ module.exports = async (req, res, next) => {
       return;
     }
 
+    console.log("existe token");
     //DONE Comprobar que el token es válido
     const payload = jwt.verify(jwtToken, process.env.JWT_SECRET);
-
+    console.log("token verificado");
     req.apiLoggedUser = payload._id;
 
     next();

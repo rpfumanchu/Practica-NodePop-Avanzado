@@ -1,8 +1,21 @@
 <nav class="navbar">
-  <h1>NodePop</h1>
+  <div>
+    <h1>NodePop</h1>
+    <% getLocales().forEach(locale=>{ %>
+      <a href="/change-locale/<%= locale %>">
+        <%= locale %>
+      </a>&nbsp;
+      <% })%>
+  </div>
   <ul class="list">
-    <li class="list-item"><a href="http://127.0.0.1:3001/filter">Fitrado y busqueda</a></li>
-    <li class="list-item"><a href="http://127.1.1.0:3001/create">Crea un anuncio</a></li>
-    <li class="list-item"><a href="http://127.1.1.0:3001/range/659">Rango de precios</a></li>
+    <li class="list-item"><a href="http://127.0.0.1:3001/filter">
+        <%=__("filtering and search")%>
+      </a></li>
+    <li class="list-item"><a href="http://127.1.1.0:3001/create">
+        <%=__("Create an ad")%>
+      </a></li>
+    <li class="list-item"><a href="http://127.1.1.0:3001/range/659">
+        <%=__("Price range")%>
+      </a></li>
   </ul>
 </nav>
