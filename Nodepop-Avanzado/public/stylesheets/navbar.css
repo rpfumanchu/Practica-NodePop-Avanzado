@@ -13,9 +13,7 @@
 }
 
 .list-item > a {
-  text-decoration: none;
   color: #4b4b4b;
-  height: 30px;
   padding: 2px 12px;
   margin: 0 20px;
   transition: none linear 0.5s;
@@ -36,6 +34,15 @@ ul.list {
 h4 {
   display: block;
   font-size: 25px;
+}
+.navbar .locale {
+  display: flex;
+  flex-direction: row;
+}
+.navbar .locale a {
+  margin-left: 20px;
+  margin-right: 5px;
+  color: var(--bg-color);
 }
 
 .title {

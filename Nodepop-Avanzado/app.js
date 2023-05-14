@@ -3,10 +3,10 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const session = require("express-session");
 const LoginControllerApi = require("./controllers/loginControllerApi");
 const jwtAuthApiMiddlewar = require("./lib/jwtAuthApiMiddleware");
 const i18n = require("./lib/i18nConfigure");
+//const session = require('express-session');
 
 require("./lib/connectMongoose");
 
@@ -23,7 +23,6 @@ app.set("x-powered-by", false);
 
 app.locals.title = "NodePop";
 
-app.use(i18n.init);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -47,6 +46,7 @@ app.use(
 app.post("/api/login", loginControllerApi.authApi);
 app.use("/api/users", require("./routes/api/users"));
 
+app.use(i18n.init);
 /**
  * Rutas del Website
  */
@@ -58,6 +58,7 @@ app.use("/api/users", require("./routes/api/users"));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/change-locale", require("./routes/change-locale"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

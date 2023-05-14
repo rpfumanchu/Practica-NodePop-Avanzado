@@ -1,10 +1,10 @@
 <nav class="navbar">
-  <div>
+  <div class="locale">
     <h1>NodePop</h1>
     <% getLocales().forEach(locale=>{ %>
       <a href="/change-locale/<%= locale %>">
         <%= locale %>
-      </a>&nbsp;
+      </a>
       <% })%>
   </div>
   <ul class="list">

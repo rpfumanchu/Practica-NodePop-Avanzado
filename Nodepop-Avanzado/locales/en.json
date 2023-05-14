@@ -35,5 +35,9 @@
 	"Enter true or false": "Enter true or false",
 	"Enter a price": "Enter a price",
 	"Enter a tag": "Enter a tag",
-	"Enter an image": "Enter an image"
+	"Enter an image": "Enter an image",
+	"price between": "price between",
+	"and": "and",
+	"price less than or equal to": "price less than or equal to",
+	"exact price of": "exact price of"
 }

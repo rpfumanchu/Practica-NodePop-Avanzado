@@ -9,6 +9,7 @@ i18n.configure({
   autoReload: true,
   //NOTE Sync locale information across all files
   syncFiles: true,
+  cookie: "nodepop-locale",
 });
 
 //NOTE Para utilizar en scripts
