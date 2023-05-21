@@ -28,25 +28,30 @@
 
 
       <form class="form" action="/filter" method="get">
+
         <input class="button" type="submit" value=<%=__("Catalogue")%> />
         <label class="label" for="limit"></label>
         <button class="button" id="limit" name="limit" value="2">
           <%=__("2 ads")%>
         </button>
+
         <label class="label" for="limit2"></label>
         <button class="button" id="limit2" name="limit" value="4">
           <%=__("4 ads")%>
         </button>
+
         <label class="label" for="skip"></label>
         <button class="button" id="skip" name="skip" value="4">
           <%=__("Skip 4")%>
         </button>
+
       </form>
 
       <form class="form" action="/filter" method="get">
         <label class="label">
           <%=__("By order")%>
         </label>
+
         <select class="select" name="sort" id="sort">
           <option value="">
             <%=__("Choose")%>
@@ -58,12 +63,16 @@
             <%=__("Price")%>
           </option>
         </select>
+
         <input class="button" type="submit" value=<%=__("Show")%> />
+
       </form>
       <form class="form" action="/filter" method="get">
+
         <label class="label">
           <%=__("Select an item")%>
         </label>
+
         <select class="select" name="name" id="name">
           <option value="">
             <%=__("Choose")%>
@@ -72,15 +81,18 @@
               <%=ad.name%>
             </option> })
             <%})%>
-
         </select>
+
         <input class="button" type="submit" value=<%=__("Show")%> />
+
       </form>
 
       <form class="form" action="/filter" method="get">
+
         <label class="label">
           <%=__("select a letter")%>
         </label>
+
         <select class="select" name="name" id="name">
           <option value="">
             <%=__("Choose")%>
@@ -97,13 +109,17 @@
           <option value="E">E</option>
           <option value="A">A</option>
         </select>
+
         <input class="button" type="submit" value=<%=__("Show")%> />
+
       </form>
 
       <form class="form" action="/filter" method="get">
+
         <label class="label">
           <%=__("Select a field")%>
         </label>
+
         <select class="select" name="fields" id="fields">
           <option value="">
             <%=__("Choose")%>
@@ -122,6 +138,7 @@
         <label class="label">
           <%=__("Select an item")%>
         </label>
+
         <select class="select" name="name" id="name">
           <option value="">
             <%=__("Choose")%>
@@ -131,13 +148,17 @@
             </option> })
             <%})%>
         </select>
+
         <input class="button" type="submit" value=<%=__("Show")%> />
+
       </form>
 
       <form class="form" action="/filter" method="get">
+
         <label class="label">
           <%=__("Select a tag")%>
         </label>
+
         <select class="select" name="tags" id="tags">
           <option value="">
             <%=__("Choose")%>
@@ -155,13 +176,17 @@
             <%=__("Work")%>
           </option>
         </select>
+
         <input class="button" type="submit" value=<%=__("Show")%> />
+
       </form>
 
       <form class="form" action="/filter" method="get">
+
         <label class="label">
           <%=__("Select a state")%>
         </label>
+
         <select class="select" name="state" id="state">
           <option value="">
             <%=__("Choose")%>
@@ -173,19 +198,25 @@
             <%=__("Buys")%>
           </option>
         </select>
+
         <input class="button" type="submit" value=<%=__("Show")%> />
+
       </form>
 
       <form class="form" action="/tags" method="get">
+
         <label class="label">
           <%=__("different")%>
         </label>
+
         <select class="select" name="tags" id="tags">
           <option value="tags">
             <%=__("Tags")%>
           </option>
         </select>
+
         <input class="button" type="submit" value=<%=__("Show")%> />
+
       </form>
 
       <div class="container">
@@ -193,11 +224,11 @@
             <p class="ad">
               <%=__("Article")%>
                 <%= elem.name %>
-                  <%= elem.adStatus %>
+                  <%=__(elem.adStatus)%>
                     <%=__("and its price is")%>
                       <%= elem.price %>
                         <%=__("Euro")%>
-                          <img class="image" src="../images/<%= elem.img %>.jpg" />
+                          <img class="image" src="images/<%= elem.img %>" />
                           <span class="span">
                             <%= elem.tags %>
                           </span>
@@ -215,24 +246,12 @@
                       <%=__("Euro")%>
                 </p>
                 <% } else { %>
-                  <img class="image" src="../images/<%= elem.img %>.jpg" />
+                  <img class="image" src="images/<%= elem.img %>" />
                   <% } %>
                     <% }) %>
       </div>
 
-      <div class="form">
-        <ul>
-          <li class="links"><a class="links" href="http://127.1.1.0:3001/create">
-              <%=__("Create an ad")%>
-            </a></li>
-          <li class="links"><a class="links" href="http://127.1.1.0:3001/range/659">
-              <%=__("Price range")%>
-            </a></li>
-          <li class="links"><a class="links" href="http://127.1.1.0:3001">
-              <%=__("Home")%>
-            </a></li>
-        </ul>
-      </div>
+
 
   </main>
 

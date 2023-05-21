@@ -7,7 +7,7 @@ const LoginControllerApi = require("./controllers/loginControllerApi");
 const jwtAuthApiMiddlewar = require("./lib/jwtAuthApiMiddleware");
 const i18n = require("./lib/i18nConfigure");
 const LoginControllerweb = require("./controllers/loginControllerWeb");
-const sesisonAuth = require("./lib/sessionAuthMiddleware");
+const sessisonAuth = require("./lib/sessionAuthMiddleware");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
@@ -77,11 +77,11 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
-app.get("/filter", sesisonAuth, require("./routes/filter"));
-app.get("/create", sesisonAuth, require("./routes/create"));
-app.post("/create", sesisonAuth, require("./routes/create"));
-app.get("/tags", sesisonAuth, require("./routes/tags"));
-app.get("/range/:price", sesisonAuth, require("./routes/range"));
+app.get("/filter", sessisonAuth, require("./routes/filter"));
+app.get("/create", sessisonAuth, require("./routes/create"));
+app.post("/create", sessisonAuth, require("./routes/create"));
+app.get("/tags", sessisonAuth, require("./routes/tags"));
+app.get("/range/:price", sessisonAuth, require("./routes/range"));
 app.use("/users", usersRouter);
 app.use("/change-locale", require("./routes/change-locale"));
 app.get("/login", loginControllerWeb.index);

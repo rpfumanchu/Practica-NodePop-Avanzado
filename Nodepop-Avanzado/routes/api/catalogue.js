@@ -3,7 +3,8 @@ const router = express.Router();
 const { Ad } = require("../../models");
 const findOut = require("../api/validations");
 const getCatalogue = require("../../lib/filter");
-const { validationResult } = require("express-validator");
+const upload = require("../../lib/uploadConfigure");
+//const { validationResult } = require("express-validator");
 
 //NOTE CRUD: create, read, update, delete
 
@@ -79,24 +80,31 @@ router.put("/modify/:id", findOut(), async (req, res, next) => {
 //DONE Crea un anuncio
 //NOTE POST /api/catalogue/create (body)
 //http://localhost:3001/api/catalogue/create
-router.post("/create", findOut(), async (req, res, next) => {
-  try {
-    const adData = req.body;
+router.post(
+  "/create",
+  upload.single("img"),
+  findOut(),
+  async (req, res, next) => {
+    try {
+      const adData = req.body;
 
-    //NOTE Creo una instancia de ad en memoria
-    const ad = new Ad(adData);
+      adData.img = req.file.filename;
 
-    //NOTE La persistimos en la base de datos
-    const saveAd = await ad.save();
+      //NOTE Creo una instancia de ad en memoria
+      const ad = new Ad(adData);
 
-    res.json({ result: saveAd });
-    console.log(
-      `creado con exito anuncio con id ${saveAd.id} y nombre ${saveAd.name} `,
-    );
-  } catch (error) {
-    next(error);
-  }
-});
+      //NOTE La persistimos en la base de datos
+      const saveAd = await ad.save();
+
+      res.json({ result: saveAd });
+      console.log(
+        `creado con exito anuncio con id ${saveAd.id} y nombre ${saveAd.name} `,
+      );
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 
 //DONE Borra un anuncio por su _id
 //NOTE DELETE /api/catalogue/delete

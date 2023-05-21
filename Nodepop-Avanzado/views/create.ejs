@@ -37,27 +37,30 @@
         <label class="form-label" for="name">
           <%=__("Article")%>
         </label>
-        <input class="form-input" name="name" id="name" type="text" placeholder=<%=__("Enter the name")%>>
+        <input class="form-input" name="name" id="name" type="text" placeholder="<%=__(" Enter the name")%>">
 
-        <label class="form-label" for="state">
-          <%=__("Sale /purchase status")%>
-        </label>
-        <input class="form-input" name="state" id="state" type="text" placeholder=<%=__("Enter true or false")%>>
+        <div class="form-label">
+          <label class="form-label" for="state">Vender</label>
+          <input className="form-input" type="radio" name="state" value="true" />
+
+          <label class="form-label" for="state">Comprar</label>
+          <input type="radio" class="form-input" name="state" id="state" value="false" />
+        </div>
 
         <label class="form-label" for="price">
           <%=__("Price")%>
         </label>
-        <input class="form-input" name="price" id="price" type="number" placeholder=<%=__("Enter a price")%>>
+        <input class="form-input" name="price" id="price" type="number" placeholder="<%=__(" Enter a price")%>">
 
         <label class="form-label" for="tag">
           <%=__("Tags (lifestyle,work,motor,mobile)")%>
         </label>
-        <input class="form-input" name="tags" id="tag" type="text" placeholder=<%=__("Enter a tag")%>>
+        <input class="form-input" name="tags" id="tag" type="text" placeholder="<%=__(" Enter a tag")%>">
 
         <label class="form-label" for="img">
           <%=__("image")%>
         </label>
-        <input class="form-label-img" name="img" id="img" type="file" placeholder=<%=__("Enter an image")%>>
+        <input class="form-label-img" name="img" id="img" type="file" placeholder="<%=__(" Enter an image")%>">
 
         <button class="button" type="submit">
           <%=__("Create")%>

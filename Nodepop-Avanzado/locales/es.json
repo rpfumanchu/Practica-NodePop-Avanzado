@@ -47,5 +47,12 @@
 	"Sale /purchase status": "Estado venta/compra",
 	"Tags (lifestyle,work,motor,mobile)": "Tags (lifestyle,trabajo,motor,mobil)",
 	"image": "imagen",
-	"Create": "Crear"
+	"Create": "Crear",
+	" Enter a price": " Enter a price",
+	" Enter the name": " Enter the name",
+	" Enter true or false": " Enter true or false",
+	" Enter a tag": " Enter a tag",
+	" Enter an image": " Enter an image",
+	"on sale": "En venta",
+	"buy": "Compra"
 }

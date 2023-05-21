@@ -75,13 +75,14 @@
       <div class="container">
         <% priceRange.forEach(elem=> { %>
           <p>Articulo <%= elem.name %>
-              <%= elem.adStatus %> y su precio es de
-                <%= elem.price %>
-                  <%=__("Euro")%>
-                    <img class="image" src="../images/<%= elem.img %>.jpg" /> <span class="span">
-                      <%= elem.tags %>
-                    </span>
-                    <% }) %>
+              <%=__(elem.adStatus)%>
+                <%=__("and its price is")%>
+                  <%= elem.price %>
+                    <%=__("Euro")%>
+                      <img class="image" src="../images/<%= elem.img %>" /> <span class="span">
+                        <%= elem.tags %>
+                      </span>
+                      <% }) %>
           </p>
       </div>
 
