@@ -6,71 +6,73 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/reset.css">
-  <link rel='stylesheet' href="/stylesheets/form.css">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel='stylesheet' href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/navbar.css" />
+  <link rel="stylesheet" href="/stylesheets/formCreate.css" />
+  <link rel="stylesheet" href="/stylesheets/form.css" />
+  <link rel="stylesheet" href="/stylesheets/footer.css" />
+
+
   <title>
     <%= title %>
   </title>
 </head>
 
 <body>
-  <% include title.ejs %>
+  <header class="layout-header">
+    <% include navbar.ejs %>
 
-    <form action="/create" method="post">
-      <div class="form">
+  </header>
+
+  <main class="layout-main">
+    <% include title.ejs %>
+
+      <form action="/create" method="post" class="container-form">
+
         <p class="p">
           <%= __("Create an ad")%>
         </p>
 
-      </div>
-      <div class="form">
-        <label class="label" for="name">Artículo</label>
-        <input class="select" name="name" id="name" type="text" placeholder=<%=__("Enter the name")%>>
-      </div>
-      <div class="form">
-        <label class="label" for="state">Estado venta/compra</label>
-        <input class="select" name="state" id="state" type="text" placeholder=<%=__("Enter true or false")%>>
-      </div>
-      <div class="form">
-        <label class="label" for="price">Precio</label>
-        <input class="select" name="price" id="price" type="number" placeholder=<%=__("Enter a price")%>>
-      </div>
-      <div class="form">
-        <label class="label" for="tag">tags (lifestyle, mobile, motor, work)</label>
-        <input class="select" name="tags" id="tag" type="text" placeholder=<%=__("Enter a tag")%>>
-      </div>
-      <div class="form">
-        <label class="label" for="img">imagen</label>
-        <input class="select" name="img" id="img" type="text" placeholder=<%=__("Enter an image")%>>
-      </div>
-      <div class="form">
-        <button class="button" type="submit">Crear</button>
-      </div>
+        <label class="form-label" for="name">
+          <%=__("Article")%>
+        </label>
+        <input class="form-input" name="name" id="name" type="text" placeholder=<%=__("Enter the name")%>>
 
-    </form>
+        <label class="form-label" for="state">
+          <%=__("Sale /purchase status")%>
+        </label>
+        <input class="form-input" name="state" id="state" type="text" placeholder=<%=__("Enter true or false")%>>
 
-    <% if (!!saveAd) { %>
-      <div class="form">
-        <p class="select">
+        <label class="form-label" for="price">
+          <%=__("Price")%>
+        </label>
+        <input class="form-input" name="price" id="price" type="number" placeholder=<%=__("Enter a price")%>>
+
+        <label class="form-label" for="tag">
+          <%=__("Tags (lifestyle,work,motor,mobile)")%>
+        </label>
+        <input class="form-input" name="tags" id="tag" type="text" placeholder=<%=__("Enter a tag")%>>
+
+        <label class="form-label" for="img">
+          <%=__("image")%>
+        </label>
+        <input class="form-label-img" name="img" id="img" type="file" placeholder=<%=__("Enter an image")%>>
+
+        <button class="button" type="submit">
+          <%=__("Create")%>
+        </button>
+      </form>
+
+      <% if (!!saveAd) { %>
+        <p class="form-label">
           <%=__("Successfully created ad:")%>
             <%= saveAd.name%>
         </p>
-      </div>
+        <% } %>
 
-      <% } %>
-        <!--  -->
-        <div class="form">
-          <ul>
-            <li class="links"><a class="links" href="http://127.0.0.1:3001/filter">
-                <%=__("filtering and search")%>
-              </a></li>
-            <li class="links"><a class="links" href="http://127.1.1.0:3001">
-                <%=__("Home")%>
-              </a></li>
-          </ul>
-        </div>
 
-        <% include footer.ejs %>
 
-</body>
+  </main>
 
-</html>
+  <% include footer.ejs %>

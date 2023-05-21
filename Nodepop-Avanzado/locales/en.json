@@ -39,5 +39,13 @@
 	"price between": "price between",
 	"and": "and",
 	"price less than or equal to": "price less than or equal to",
-	"exact price of": "exact price of"
+	"exact price of": "exact price of",
+	"Logout": "Logout",
+	"Login": "Login",
+	"available tags": "available tags",
+	"Successfully created ad:": "Successfully created ad:",
+	"Sale /purchase status": "Sale /purchase status",
+	"Tags (lifestyle,work,motor,mobile)": "Tags (lifestyle,work,motor,mobile)",
+	"image": "image",
+	"Create": "Create"
 }

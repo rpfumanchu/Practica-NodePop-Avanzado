@@ -26,12 +26,12 @@ input::placeholder {
   color: var(--main-text-color);
 }
 
-.main-content,
+/* .main-content,
 .form-container {
   width: 90%;
   margin: 40px auto;
   max-width: 920px;
-}
+} */
 
 /* body {
   background-color: whitesmoke;

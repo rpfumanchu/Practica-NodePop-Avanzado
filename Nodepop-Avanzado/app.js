@@ -6,7 +6,10 @@ var logger = require("morgan");
 const LoginControllerApi = require("./controllers/loginControllerApi");
 const jwtAuthApiMiddlewar = require("./lib/jwtAuthApiMiddleware");
 const i18n = require("./lib/i18nConfigure");
-//const session = require('express-session');
+const LoginControllerweb = require("./controllers/loginControllerWeb");
+const sesisonAuth = require("./lib/sessionAuthMiddleware");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 require("./lib/connectMongoose");
 
@@ -46,19 +49,44 @@ app.use(
 app.post("/api/login", loginControllerApi.authApi);
 app.use("/api/users", require("./routes/api/users"));
 
-app.use(i18n.init);
 /**
  * Rutas del Website
  */
+app.use(i18n.init);
+app.use(
+  session({
+    name: "nodeapp-session",
+    secret: "as78dbas8d7bva6sd6vas",
+    saveUninitialized: true,
+    resave: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 2, // expira a los 2 días de inactividad
+    },
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_CONNECTION_STR,
+    }),
+  }),
+);
+
+const loginControllerWeb = new LoginControllerweb();
 
 // // hacemos que el objeto de sesión esté disponible al renderizar vistas
-// app.use((req, res, next) => {
-//   res.locals.session = req.session;
-//   next();
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
 
 app.use("/", indexRouter);
+app.get("/filter", sesisonAuth, require("./routes/filter"));
+app.get("/create", sesisonAuth, require("./routes/create"));
+app.post("/create", sesisonAuth, require("./routes/create"));
+app.get("/tags", sesisonAuth, require("./routes/tags"));
+app.get("/range/:price", sesisonAuth, require("./routes/range"));
 app.use("/users", usersRouter);
 app.use("/change-locale", require("./routes/change-locale"));
+app.get("/login", loginControllerWeb.index);
+app.post("/login", loginControllerWeb.post);
+app.get("/logout", loginControllerWeb.logout);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

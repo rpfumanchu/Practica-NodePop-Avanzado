@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
     //DONE Recoger el jwtToken de la cabecera, o el body o la query-string
     let jwtToken = req.get("Authorization") || req.body.jwt || req.query.jwt;
 
-    jwtToken = jwtToken.replace("Bearer ", "");
+    //jwtToken = jwtToken.replace("Bearer ", "");
 
     console.log("hay token");
 
