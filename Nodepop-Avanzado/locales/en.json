@@ -54,5 +54,8 @@
 	" Enter a tag": " Enter a tag",
 	" Enter an image": " Enter an image",
 	"on sale": "on sale",
-	"buy": "buy"
+	"buy": "buy",
+	"Invalid credentials": "Invalid credentials",
+	"sale": "sale",
+	"Buy": "Buy"
 }

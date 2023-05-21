@@ -40,10 +40,14 @@
         <input class="form-input" name="name" id="name" type="text" placeholder="<%=__(" Enter the name")%>">
 
         <div class="form-label">
-          <label class="form-label" for="state">Vender</label>
-          <input className="form-input" type="radio" name="state" value="true" />
+          <label class="form-label" for="state">
+            <%=__("sale")%>
+          </label>
+          <input class="form-input" type="radio" name="state" value="true" />
 
-          <label class="form-label" for="state">Comprar</label>
+          <label class="form-label" for="state">
+            <%=__("Buy")%>
+          </label>
           <input type="radio" class="form-input" name="state" id="state" value="false" />
         </div>
 

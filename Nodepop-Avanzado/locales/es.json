@@ -48,11 +48,14 @@
 	"Tags (lifestyle,work,motor,mobile)": "Tags (lifestyle,trabajo,motor,mobil)",
 	"image": "imagen",
 	"Create": "Crear",
-	" Enter a price": " Enter a price",
-	" Enter the name": " Enter the name",
+	" Enter a price": " introduce un precio",
+	" Enter the name": " introduce un nombre",
 	" Enter true or false": " Enter true or false",
-	" Enter a tag": " Enter a tag",
-	" Enter an image": " Enter an image",
+	" Enter a tag": " Introduce un tag",
+	" Enter an image": " Introduce una imagen",
 	"on sale": "En venta",
-	"buy": "Compra"
+	"buy": "Compra",
+	"Invalid credentials": "Credenciales no válidas",
+	"sale": "Venta",
+	"Buy": "Compra"
 }
