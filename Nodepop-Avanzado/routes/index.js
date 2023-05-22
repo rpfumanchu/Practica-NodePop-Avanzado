@@ -4,6 +4,7 @@ const Ad = require("../models/Ad");
 const { validationResult } = require("express-validator");
 const findOut = require("./api/validations");
 const getCatalogue = require("../lib/filter");
+const sessionAuth = require("../lib/sessionAuthMiddleware");
 
 /* GET home page. */
 // http://127.0.0.1:3001

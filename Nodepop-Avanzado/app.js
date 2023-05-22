@@ -7,7 +7,7 @@ const LoginControllerApi = require("./controllers/loginControllerApi");
 const jwtAuthApiMiddlewar = require("./lib/jwtAuthApiMiddleware");
 const i18n = require("./lib/i18nConfigure");
 const LoginControllerweb = require("./controllers/loginControllerWeb");
-const sessisonAuth = require("./lib/sessionAuthMiddleware");
+
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
