@@ -77,11 +77,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
-app.get("/filter", sessisonAuth, require("./routes/filter"));
-app.get("/create", sessisonAuth, require("./routes/create"));
-app.post("/create", sessisonAuth, require("./routes/create"));
-app.get("/tags", sessisonAuth, require("./routes/tags"));
-app.get("/range/:price", sessisonAuth, require("./routes/range"));
 app.use("/users", usersRouter);
 app.use("/change-locale", require("./routes/change-locale"));
 app.get("/login", loginControllerWeb.index);
