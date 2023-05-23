@@ -4,6 +4,7 @@ const { Ad } = require("../../models");
 const findOut = require("../api/validations");
 const getCatalogue = require("../../lib/filter");
 const upload = require("../../lib/uploadConfigure");
+
 //const { validationResult } = require("express-validator");
 
 //NOTE CRUD: create, read, update, delete
@@ -87,18 +88,19 @@ router.post(
   async (req, res, next) => {
     try {
       const adData = req.body;
-
       adData.img = req.file.filename;
+      console.log("lafitoa", adData.img);
 
-      //NOTE Creo una instancia de ad en memoria
+      const thumbnail = await Ad.imageMicroService(adData.img);
+      console.log("soy el thunbail", thumbnail);
+
       const ad = new Ad(adData);
 
-      //NOTE La persistimos en la base de datos
       const saveAd = await ad.save();
-
       res.json({ result: saveAd });
+
       console.log(
-        `creado con exito anuncio con id ${saveAd.id} y nombre ${saveAd.name} `,
+        `Creado con éxito anuncio con id ${saveAd.id} y nombre ${saveAd.name}`,
       );
     } catch (error) {
       next(error);

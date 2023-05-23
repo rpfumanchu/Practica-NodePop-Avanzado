@@ -1,4 +1,8 @@
 const mongoose = require("mongoose");
+const path = require("node:path");
+const { Requester } = require("cote");
+
+const requester = new Requester({ name: "thumbnailService" });
 
 // definir el esquema de los anuncios
 const AdSchema = mongoose.Schema({
@@ -59,6 +63,26 @@ AdSchema.statics.priceRange = function (price) {
 AdSchema.virtual("adStatus").get(function () {
   return this.state ? "on sale" : "buy";
 });
+
+//DONE Método microservice
+AdSchema.statics.imageMicroService = async function (img) {
+  const image = {
+    type: "generateThumbnail",
+    imagePath: path.join(__dirname, "..", "public", "images", img),
+    thumbnailPath: path.join(
+      __dirname,
+      "..",
+      "public",
+      "images",
+      "thumbnail",
+      `thumbn-${img}`,
+    ),
+    width: 200,
+    height: 200,
+  };
+  console.log(image);
+  return new Promise(resolve => requester.send(image, resolve));
+};
 
 // crear el modelo de Ad
 const Ad = mongoose.model("Ad", AdSchema);
