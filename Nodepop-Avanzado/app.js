@@ -7,6 +7,7 @@ const LoginControllerApi = require("./controllers/loginControllerApi");
 const jwtAuthApiMiddlewar = require("./lib/jwtAuthApiMiddleware");
 const i18n = require("./lib/i18nConfigure");
 const LoginControllerweb = require("./controllers/loginControllerWeb");
+const swaggerMiddleware = require("./lib/swaggerMiddleware");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -41,6 +42,7 @@ const loginControllerApi = new LoginControllerApi();
 /**
  * Rutas del API
  */
+app.use("/api-doc", swaggerMiddleware);
 app.use(
   "/api/catalogue",
   jwtAuthApiMiddlewar,

@@ -1,0 +1,152 @@
+swagger: "2.0"
+info:
+  description: "Api de NodeAPP"
+  version: "1.1.0"
+  title: "NodeApp"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+  - name: "catalogue"
+    description: "Operations related to catalogue"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /api/login:
+    post:
+      parameters:
+        - name: "credentials"
+          in: "body"
+          description: "User credentials"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              email:
+                type: "string"
+              password:
+                type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              token:
+                type: "string"
+  /api/catalogue:
+    get:
+      tags:
+        - "catalogue"
+      summary: "Get a list of ads"
+      description: "Returns a list of ads based on the provided filters"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "name"
+          in: "query"
+          description: "Filter ads by name (partial match)"
+          type: "string"
+        - name: "tags"
+          in: "query"
+          description: "Filter ads by tags"
+          type: "string"
+        - name: "state"
+          in: "query"
+          description: "Filter ads by state (true or false)"
+          type: "boolean"
+        - name: "sort"
+          in: "query"
+          description: "Sort ads by field (e.g., 'price')"
+          type: "string"
+        - name: "fields"
+          in: "query"
+          description: "Specify fields to include in the response"
+          type: "string"
+        - name: "limit"
+          in: "query"
+          description: "Limit the number of ads in the response"
+          type: "integer"
+        - name: "skip"
+          in: "query"
+          description: "Skip a certain number of ads in the response"
+          type: "integer"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              results:
+                type: "array"
+                items:
+                  $ref: "#/definitions/Ad"
+      security:
+        - JWT: []
+    put:
+      tags:
+        - "catalogue"
+      summary: "Modify an ad"
+      description: "Modifies an ad identified by its ID"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the ad to be modified"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Updated ad data"
+          required: true
+          schema:
+            $ref: "#/definitions/Ad"
+      responses:
+        200:
+          description: "Successful operation"
+      security:
+        - JWT: []
+    post:
+      tags:
+        - "catalogue"
+      summary: "Create an ad"
+      description: "Creates a new ad"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Ad object that needs to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/Ad"
+      responses:
+        200:
+          description: "Successful operation"
+      security:
+        - JWT: []
+securityDefinitions:
+  JWT:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+definitions:
+  Ad:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      description:
+        type: "string"

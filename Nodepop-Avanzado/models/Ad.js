@@ -80,7 +80,6 @@ AdSchema.statics.imageMicroService = async function (img) {
     width: 200,
     height: 200,
   };
-  console.log(image);
   return new Promise(resolve => requester.send(image, resolve));
 };
 

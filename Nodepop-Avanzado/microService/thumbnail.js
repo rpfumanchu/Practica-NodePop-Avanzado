@@ -25,6 +25,7 @@ responder.on("generateThumbnail", async (req, done) => {
     //NOTE guardo la miniatura en el directorio de salida
     await image.writeAsync(resolvedThumbnailPath);
 
+    //TODO
     done(null, "Thumbnail generado correctamente");
   } catch (error) {
     done(error);
