@@ -88,10 +88,9 @@ paths:
             properties:
               results:
                 type: "array"
-                items:
-                  $ref: "#/definitions/Ad"
       security:
         - JWT: []
+  /api/catalogue/modify/{id}:
     put:
       tags:
         - "catalogue"
@@ -110,43 +109,117 @@ paths:
           description: "Updated ad data"
           required: true
           schema:
-            $ref: "#/definitions/Ad"
+            $ref: "#/definitions/AdInput"
       responses:
         200:
           description: "Successful operation"
       security:
         - JWT: []
+  /api/catalogue/create:
     post:
       tags:
-        - "catalogue"
-      summary: "Create an ad"
-      description: "Creates a new ad"
-      produces:
-        - "application/json"
+        - catalogue
+      summary: Create an ad
+      description: Create a new ad with an uploaded image
+      consumes:
+        - multipart/form-data
       parameters:
-        - in: "body"
-          name: "body"
-          description: "Ad object that needs to be added"
+        - name: name
+          in: formData
+          description: Name of the ad
           required: true
-          schema:
-            $ref: "#/definitions/Ad"
+          type: string
+        - name: state
+          in: formData
+          description: State of the ad
+          required: true
+          type: boolean
+        - name: price
+          in: formData
+          description: Price of the ad
+          required: true
+          type: number
+        - name: tags
+          in: formData
+          description: Tags for the ad
+          required: true
+          type: array
+          items:
+            type: string
+        - name: img
+          in: formData
+          description: Image file for the ad
+          type: file
       responses:
         200:
-          description: "Successful operation"
+          description: Ad successfully created
+        500:
+          description: Internal server error
       security:
         - JWT: []
+
+  /api/catalogue/delete/{id}:
+    delete:
+      tags:
+        - Catalogue
+      summary: Delete an ad by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the ad to delete
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ad successfully deleted
+        404:
+          description: Ad not found
+        500:
+          description: Internal server error
+      security:
+        - JWT: []
+
+  /api/catalogue/range/{price}:
+    get:
+      tags:
+        - Catalogue
+      summary: Get ads within a price range
+      parameters:
+        - name: price
+          in: path
+          description: Price range filter (example. price between 50-800, smaller than -200, greater than 11000-, exact price 659)
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successfully retrieved ads within the price range
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+      security:
+        - JWT: []
+
 securityDefinitions:
   JWT:
     type: "apiKey"
     name: "Authorization"
     in: "header"
+
 definitions:
-  Ad:
-    type: "object"
+  AdInput:
+    type: object
     properties:
-      id:
-        type: "integer"
       name:
-        type: "string"
-      description:
-        type: "string"
+        type: string
+      state:
+        type: boolean
+      price:
+        type: number
+      tags:
+        type: array
+        items:
+          type: string
+      img:
+        type: string

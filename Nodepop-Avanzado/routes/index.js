@@ -91,4 +91,26 @@ router.post("/create", sessionAuth, findOut(), async (req, res, next) => {
   }
 });
 
+//DONE modifica un anuncio
+//NOTE PUT /api/catalogue/modify
+//localhost:3001/modify/"_id del anuncio"
+router.put("/modify/:id", findOut(), async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const data = req.body;
+
+    const updatedAd = await Ad.findByIdAndUpdate(id, data, {
+      new: true, // "nota para mi" esto hace que nos devuelva el documento actualizado
+    });
+
+    res.locals.updatedAd = updatedAd;
+    res.render("create");
+    console.log(
+      `actualizado anuncio con id ${updatedAd.id} y nombre ${updatedAd.name} `,
+    );
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
