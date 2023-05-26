@@ -33,22 +33,22 @@ npm run micro
 Iniciar todos los microservicios en desarrollo
 
 ```sh
-npx pm2 start ecosystem.config.js --env development
+ pm2 start ecosystem.config.js --env development
 ```
 
 Comandos PM2:
 
 ```sh
-npx pm2 list
-npx pm2 logs
-npx pm2 monit
+ pm2 list
+ pm2 logs
+ pm2 monit
 ```
 
 To stop:
 
 ```sh
-npx pm2 stop all
-npx pm2 delete all
+ pm2 stop all
+ pm2 delete all
 ```
 
 ## Información general

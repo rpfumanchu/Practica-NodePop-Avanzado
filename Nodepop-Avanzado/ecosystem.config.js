@@ -4,6 +4,14 @@ module.exports = {
       name: "nodepop",
       script: "bin/www",
       watch: ".",
+      // env_production: {
+      //   NODE_ENV: "production",
+      //   PORT: 80,
+      // },
+      env_development: {
+        NODE_ENV: "development",
+      },
+      log_date_format: "YYYY-MM-DD HH:mm",
     },
     {
       name: "thumbnail",
