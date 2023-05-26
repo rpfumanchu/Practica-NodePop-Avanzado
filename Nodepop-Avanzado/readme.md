@@ -6,7 +6,7 @@ Instala las dependencias con:
 npm install
 ```
 
-Copy .env.example to .env and customize your variables.
+Copie .env.example a .env y personalice sus variables.
 
 ```sh
 cp .env.example .env
@@ -24,6 +24,33 @@ Comience en modo de desarrollo:
 npm run dev
 ```
 
+Arranca el micro servicio
+
+```sh
+npm run micro
+```
+
+Iniciar todos los microservicios en desarrollo
+
+```sh
+npx pm2 start ecosystem.config.js --env development
+```
+
+Comandos PM2:
+
+```sh
+npx pm2 list
+npx pm2 logs
+npx pm2 monit
+```
+
+To stop:
+
+```sh
+npx pm2 stop all
+npx pm2 delete all
+```
+
 ## Información general
 
 Aplicación creada con:
@@ -31,6 +58,8 @@ Aplicación creada con:
 ```sh
 npx express-generator nodepop --ejs
 ```
+
+Dispone de un micro servicio con cote para hacer un thumbnail de la imagen al crear un anuncio, usando jimp para generar dicha imagen a 200x200.
 
 ## Inicie un servidor MongoDB en Macos o Linux
 
