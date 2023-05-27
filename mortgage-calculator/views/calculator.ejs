@@ -6,29 +6,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora de hipoteca</title>
-  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
 </head>
 
 <body>
-  <h1>Calculadora de hipoteca</h1>
-  <form action="/mortgage" method="POST">
-    <label for="capital">Monto:</label>
-    <input type="number" id="capital" name="capital" required><br><br>
-    <label for="rate">Tasa de interés (%):</label>
-    <input type="number" id="rate" name="rate" step="any" required><br><br>
-    <label for="term">Plazo (en años):</label>
-    <input type="number" id="term" name="term" required><br><br>
-    <label for="useEuribor">Usar Euríbor:</label>
-    <input type="checkbox" id="useEuribor" name="useEuribor"><br><br>
-    <label for="euriborValue">Valor Euríbor (%):</label>
-    <input type="number" id="euriborValue" name="euriborValue"><br><br>
-    <input type="submit" value="Calcular">
-  </form>
+  <div class="container">
+    <h1>Calculadora de hipoteca</h1>
+    <form action="/mortgage" method="POST">
+      <label for="capital">Monto:</label>
+      <input type="number" id="capital" name="capital" required><br><br>
+      <label for="rate">Tasa de interés (%):</label>
+      <input type="number" id="rate" name="rate" step="any" required><br><br>
+      <label for="term">Plazo (en años):</label>
+      <input type="number" id="term" name="term" required><br><br>
+      <label for="useEuribor">Usar Euríbor:</label>
+      <input type="checkbox" id="useEuribor" name="useEuribor"><br><br>
+      <label for="euriborValue">Valor Euríbor (%):</label>
+      <input type="number" id="euriborValue" name="euriborValue"><br><br>
+      <input type="submit" value="Calcular">
+    </form>
 
-  <% if (result) { %>
-    <p>La cuota mensual de la hipoteca es: <%= result %>
-    </p>
-    <% } %>
+    <% if (result) { %>
+      <p>La cuota mensual de la hipoteca es: <%= result %>
+      </p>
+      <% } %>
+  </div>
 </body>
 
 </html>

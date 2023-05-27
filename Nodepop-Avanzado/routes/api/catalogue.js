@@ -89,8 +89,6 @@ router.post(
     try {
       const adData = req.body;
       adData.img = req.file.filename;
-      //TODO borrar
-      console.log("lafitoa", adData.img);
 
       const thumbnail = await Ad.imageMicroService(adData.img);
 
@@ -99,7 +97,6 @@ router.post(
       const saveAd = await ad.save();
       res.json({ result: saveAd });
 
-      console.log("soy el thunbail", thumbnail);
       console.log(
         `Creado con éxito anuncio con id ${saveAd.id} y nombre ${saveAd.name}`,
       );

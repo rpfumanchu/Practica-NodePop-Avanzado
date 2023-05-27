@@ -26,7 +26,7 @@ responder.on("generateThumbnail", async (req, done) => {
     await image.writeAsync(resolvedThumbnailPath);
 
     //TODO
-    done(null, "Thumbnail generado correctamente");
+    done(image);
   } catch (error) {
     done(error);
   }
