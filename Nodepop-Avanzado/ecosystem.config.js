@@ -2,8 +2,10 @@ module.exports = {
   apps: [
     {
       name: "nodepop",
-      script: "bin/www",
-      watch: ".",
+      script: "npm",
+      args: "run start",
+      // watch: ".",
+      interpreter: "none",
       // env_production: {
       //   NODE_ENV: "production",
       //   PORT: 80,
@@ -15,9 +17,28 @@ module.exports = {
     },
     {
       name: "thumbnail",
-      cwd: "../Nodepop-Avanzado/microService",
-      script: "thumbnail.js",
-      watch: ".",
+      // cwd: "../Nodepop-Avanzado/microService",
+      // script: "thumbnail.js",
+      script: "npm",
+      args: "run micro",
+      // watch: ".",
+      interpreter: "none",
+    },
+    {
+      name: "mortgage",
+      cwd: "../mortgage-calculator",
+      script: "npm",
+      args: "run start",
+      // watch: ".",
+      interpreter: "none",
+    },
+    {
+      name: "localtunnel",
+      cwd: "../mortgage-calculator",
+      script: "npm",
+      args: "run localtunnel",
+      // watch: ".",
+      interpreter: "none",
     },
   ],
 

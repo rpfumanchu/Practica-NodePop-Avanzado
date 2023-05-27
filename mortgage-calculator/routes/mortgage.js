@@ -3,6 +3,7 @@ const calculateMonthlyFee = require("../lib/calculateMonthlyFee");
 var router = express.Router();
 
 router.get("/", (req, res, next) => {
+  res.locals.result = null;
   res.render("calculator");
 });
 
@@ -20,8 +21,8 @@ router.post("/", (req, res, next) => {
   );
 
   // Enviar el resultado como respuesta
-  //res.locals.result = result;
-  res.render("calculator", { result });
+  res.locals.result = result;
+  res.render("calculator");
 });
 
 module.exports = router;
