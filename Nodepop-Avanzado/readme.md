@@ -1,7 +1,5 @@
 # NodePop
 
-87.222.165.49
-
 Instala las dependencias con:
 
 ```sh
@@ -32,7 +30,38 @@ Arranca el micro servicio
 npm run micro
 ```
 
-Iniciar todos los microservicios en desarrollo
+## Información general
+
+Aplicación creada con:
+
+```sh
+npx express-generator nodepop --ejs
+```
+
+Dispone de un micro servicio con cote para hacer un thumbnail de la imagen al crear un anuncio, usando jimp para generar dicha imagen a 200x200.
+
+# Usuario por defecto
+
+```sh
+email: user@example.com
+password: 1234
+```
+
+## La api tiene disponible Swagger
+
+Para acceder copia el siguiente enlace
+
+http://localhost:3001/api-doc
+
+## El proyecto cuenta con una pequeña api para calcular la hipoteca desplegada con localtunnel.
+
+Esta es la url generada por localtunnel.
+
+https://robernodepop.loca.lt
+
+## Además usa PM2 para poder lanzar todos los servicios.
+
+### Iniciar todos los servicios con Pm2.
 
 ```sh
  pm2 start ecosystem.config.js
@@ -52,16 +81,6 @@ To stop:
  pm2 stop all
  pm2 delete all
 ```
-
-## Información general
-
-Aplicación creada con:
-
-```sh
-npx express-generator nodepop --ejs
-```
-
-Dispone de un micro servicio con cote para hacer un thumbnail de la imagen al crear un anuncio, usando jimp para generar dicha imagen a 200x200.
 
 ## Inicie un servidor MongoDB en Macos o Linux
 
