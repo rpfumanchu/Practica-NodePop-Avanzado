@@ -29,6 +29,9 @@ module.exports = async (req, res, next) => {
     if (error.message === "invalid signature") {
       next(createError(401, "invalid token"));
       return;
+    } else if (error.message === "jwt expired") {
+      next(createError(401, "jwt expired"));
+      return;
     }
     next(error);
   }
