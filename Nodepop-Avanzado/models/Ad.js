@@ -13,7 +13,9 @@ const AdSchema = mongoose.Schema({
   img: String,
 });
 
-AdSchema.index({ name: 1, img: 1, price: 1 }, { unique: false });
+AdSchema.index({ name: 1 });
+AdSchema.index({ img: 1 });
+//AdSchema.index({ price: 1 });
 
 //DONE método estático para las query
 

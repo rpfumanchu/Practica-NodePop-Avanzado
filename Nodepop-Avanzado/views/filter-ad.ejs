@@ -78,7 +78,7 @@
             <%=__("Choose")%>
           </option>
           <% filterAds.forEach(ad=> { %> <option value="<%= ad.name %>">
-              <%=ad.name%>
+              <%=__(ad.name)%>
             </option> })
             <%})%>
         </select>
@@ -144,7 +144,7 @@
             <%=__("Choose")%>
           </option>
           <% filterAds.forEach(ad=> { %> <option value="<%= ad.name %>">
-              <%=ad.name%>
+              <%=__(ad.name)%>
             </option> })
             <%})%>
         </select>
@@ -223,7 +223,7 @@
         <% filterAds.forEach(elem=> { %> <% if(elem.name && elem.price && elem.img) {%>
             <p class="ad">
               <%=__("Article")%>
-                <%= elem.name %>
+                <%=__(elem.name) %>
                   <%=__(elem.adStatus)%>
                     <%=__("and its price is")%>
                       <%= elem.price %>

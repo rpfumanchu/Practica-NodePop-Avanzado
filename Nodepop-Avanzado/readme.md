@@ -55,6 +55,12 @@ http://localhost:3001/api-doc
 
 ## El proyecto cuenta con una pequeña api para calcular la hipoteca desplegada con localtunnel.
 
+Instala las dependencias con:
+
+```sh
+npm install
+```
+
 Esta es la url generada por localtunnel.
 
 https://robernodepop.loca.lt
@@ -99,6 +105,19 @@ En la consola, vaya a la carpeta MongoDB y:
 - Ejecute mongosh.exe
 
 ## API Methods
+
+### POST /api/catalogue
+
+http://127.0.0.1:3001/api/login
+
+# Usuario por defecto
+
+```sh
+email: user@example.com
+password: 1234
+```
+
+###
 
 ### GET /api/catalogue
 

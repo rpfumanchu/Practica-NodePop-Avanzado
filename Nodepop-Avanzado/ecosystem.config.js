@@ -5,9 +5,9 @@ module.exports = {
       script: "npm",
       args: "run dev",
       interpreter: "none",
-      env_development: {
-        NODE_ENV: "development",
-      },
+      // env_development: {
+      //   NODE_ENV: "development",
+      // },
       log_date_format: "YYYY-MM-DD HH:mm",
     },
     {
