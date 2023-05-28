@@ -1,5 +1,7 @@
 # NodePop
 
+87.222.165.49
+
 Instala las dependencias con:
 
 ```sh
@@ -33,7 +35,7 @@ npm run micro
 Iniciar todos los microservicios en desarrollo
 
 ```sh
- pm2 start ecosystem.config.js --env development
+ pm2 start ecosystem.config.js
 ```
 
 Comandos PM2:
