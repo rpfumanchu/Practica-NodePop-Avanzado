@@ -12,6 +12,7 @@ const AdSchema = mongoose.Schema({
   tags: Array,
   img: String,
 });
+AdSchema.index({ name: 1, price: 1, img: 1 });
 
 //DONE método estático para las query
 
@@ -23,6 +24,7 @@ AdSchema.statics.catalogue = function (filter, skip, limit, sort, fields) {
   query.select(fields);
   return query.exec();
 };
+AdSchema.index({ name: 1, price: 1, img: 1 }, { unique: true });
 
 //DONE método estático para sacar los distintos tags
 AdSchema.statics.distinctTag = function () {

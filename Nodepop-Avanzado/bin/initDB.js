@@ -28,6 +28,10 @@ async function initAd() {
   // crea los anuncios iniciales
   const inserted = await Ad.insertMany(ad);
   console.log(`Creados ${inserted.length} anuncios`);
+
+  // // Crea el índice en AdSchema
+  // await Ad.createIndexes();
+  // console.log("Índice creado en la colección Ad");
 }
 
 async function initUsers() {

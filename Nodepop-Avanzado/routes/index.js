@@ -5,6 +5,7 @@ const { validationResult } = require("express-validator");
 const findOut = require("./api/validations");
 const getCatalogue = require("../lib/filter");
 const sessionAuth = require("../lib/sessionAuthMiddleware");
+const upload = require("../lib/uploadConfigure");
 
 /* GET home page. */
 // http://127.0.0.1:3001
@@ -71,25 +72,35 @@ router.get("/tags", sessionAuth, async (req, res, next) => {
 //DONE Crea un anuncio
 //NOTE POST /create (body)
 //http:127.0.0.1/:3001/create
-router.post("/create", sessionAuth, findOut(), async (req, res, next) => {
-  try {
-    const adData = req.body;
+router.post(
+  "/create",
+  sessionAuth,
+  findOut(),
+  upload.single("img"),
+  async (req, res, next) => {
+    try {
+      const adData = req.body;
+      adData.img = req.file ? req.file.filename : "";
+      console.log(adData.img);
+      console.log(adData);
+      const thumbnail = await Ad.imageMicroService(adData.img);
 
-    //NOTE Creo una instancia de ad en memoria
-    const ad = new Ad(adData);
+      //NOTE Creo una instancia de ad en memoria
+      const ad = new Ad(adData);
 
-    //NOTE La persistimos en la base de datos
-    const saveAd = await ad.save();
+      //NOTE La persistimos en la base de datos
+      const saveAd = await ad.save();
 
-    res.locals.saveAd = saveAd;
-    res.render("create");
-    console.log(
-      `creado con exito anuncio con id ${saveAd.id} y nombre ${saveAd.name} `,
-    );
-  } catch (error) {
-    next(error);
-  }
-});
+      res.locals.saveAd = saveAd;
+      res.render("create");
+      console.log(
+        `creado con exito anuncio con id ${saveAd.id} y nombre ${saveAd.name} `,
+      );
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 
 //DONE modifica un anuncio
 //NOTE PUT /api/catalogue/modify

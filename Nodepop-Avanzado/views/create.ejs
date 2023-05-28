@@ -28,7 +28,7 @@
   <main class="layout-main">
     <% include title.ejs %>
 
-      <form action="/create" method="post" class="container-form">
+      <form action="/create" method="post" class="container-form" enctype="multipart/form-data">
 
         <p class="p">
           <%= __("Create an ad")%>
@@ -64,7 +64,7 @@
         <label class="form-label" for="img">
           <%=__("image")%>
         </label>
-        <input class="form-label-img" name="img" id="img" type="file" placeholder="<%=__(" Enter an image")%>">
+        <input class="form-label-img" name="img" id="img" type="file" %>">
 
         <button class="button" type="submit">
           <%=__("Create")%>

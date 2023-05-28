@@ -5,7 +5,7 @@ const ad = [
     state: true,
     price: 659,
     tags: ["lifestyle"],
-    img: "img-1684688467323-play.jpg",
+    img: "img-1685228992566-play.jpg",
     __v: 0,
   },
   {
@@ -14,7 +14,7 @@ const ad = [
     state: false,
     price: 559,
     tags: ["lifestyle"],
-    img: "img-1684688593295-xbox.jpg",
+    img: "img-1685229099680-xbox.jpg",
     __v: 0,
   },
   {
@@ -23,7 +23,7 @@ const ad = [
     state: true,
     price: 180,
     tags: ["lifestyle"],
-    img: "img-1684688636342-zapas.jpg",
+    img: "img-1685229174394-zapas.jpg",
     __v: 0,
   },
   {
@@ -32,7 +32,7 @@ const ad = [
     state: false,
     price: 400,
     tags: ["lifestyle", "work"],
-    img: "img-1684688717643-silla.jpg",
+    img: "img-1685229211053-silla.jpg",
     __v: 0,
   },
   {
@@ -41,7 +41,7 @@ const ad = [
     state: false,
     price: 500,
     tags: ["lifestyle"],
-    img: "img-1684688760386-reloj.jpg",
+    img: "img-1685229285913-reloj.jpg",
     __v: 0,
   },
   {
@@ -50,7 +50,7 @@ const ad = [
     state: true,
     price: 1500,
     tags: ["lifestyle"],
-    img: "img-1684688811814-pc.jpg",
+    img: "img-1685229326085-pc.jpg",
     __v: 0,
   },
   {
@@ -59,7 +59,7 @@ const ad = [
     state: true,
     price: 1100,
     tags: ["mobile"],
-    img: "img-1684688842626-movil1.jpg",
+    img: "img-1685229354680-movil1.jpg",
     __v: 0,
   },
   {
@@ -68,7 +68,7 @@ const ad = [
     state: false,
     price: 400,
     tags: ["mobile"],
-    img: "img-1684688872158-movil.jpg",
+    img: "img-1685229387632-movil.jpg",
     __v: 0,
   },
   {
@@ -77,7 +77,7 @@ const ad = [
     state: true,
     price: 9500,
     tags: ["motor"],
-    img: "img-1684688908428-moto.jpg",
+    img: "img-1685229424781-moto.jpg",
     __v: 0,
   },
   {
@@ -86,7 +86,7 @@ const ad = [
     state: true,
     price: 120,
     tags: ["work"],
-    img: "img-1684688935705-mesa.jpg",
+    img: "img-1685229504387-mesa.jpg",
     __v: 0,
   },
   {

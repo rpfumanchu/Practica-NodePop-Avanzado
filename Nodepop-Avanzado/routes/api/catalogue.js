@@ -88,7 +88,7 @@ router.post(
   async (req, res, next) => {
     try {
       const adData = req.body;
-      adData.img = req.file.filename;
+      adData.img = req.file ? req.file.filename : "";
 
       const thumbnail = await Ad.imageMicroService(adData.img);
 
