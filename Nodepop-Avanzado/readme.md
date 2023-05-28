@@ -53,7 +53,7 @@ Para acceder copia el siguiente enlace
 
 http://localhost:3001/api-doc
 
-## El proyecto cuenta con una pequeña api para calcular la hipoteca desplegada con localtunnel.
+## El proyecto cuenta con una pequeña app para calcular la hipoteca desplegada con localtunnel.
 
 Instala las dependencias con:
 
@@ -106,9 +106,11 @@ En la consola, vaya a la carpeta MongoDB y:
 
 ## API Methods
 
-### POST /api/catalogue
+### POST /api/login
 
 http://127.0.0.1:3001/api/login
+
+#### Devuelve un jwt que puedes ponerlo en la cabecera, o el body o la query-string
 
 # Usuario por defecto
 
