@@ -24,8 +24,8 @@
 
   </header>
 
-  <main class="layout-main">
-    <% include title.ejs %>
+  <% include title.ejs %>
+    <main class="layout-main">
 
       <form method="POST" class="container-form">
         <label class="form-label" for="inputEmail">Email</label>
@@ -41,5 +41,5 @@
           <%= error %>
         </p>
       </form>
-  </main>
-  <% include footer.ejs %>
+    </main>
+    <% include footer.ejs %>

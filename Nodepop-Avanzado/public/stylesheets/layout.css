@@ -6,6 +6,10 @@
 }
 
 .layout-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   border-left-width: 1px;
   border-right-width: 1px;
   margin: 0 auto;

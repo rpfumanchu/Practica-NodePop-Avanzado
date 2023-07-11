@@ -23,8 +23,8 @@
 
   </header>
 
-  <main class="layout-main">
-    <% include title.ejs %>
+  <% include title.ejs %>
+    <main class="layout-main">
 
 
       <form class="form" action="/filter" method="get">
@@ -220,39 +220,48 @@
       </form>
 
       <div class="container">
-        <% filterAds.forEach(elem=> { %> <% if(elem.name && elem.price && elem.img) {%>
+        <% filterAds.forEach(elem=> { %>
+          <% if (elem.name && elem.price) { %>
             <p class="ad">
-              <%=__("Article")%>
-                <%=__(elem.name) %>
-                  <%=__(elem.adStatus)%>
-                    <%=__("and its price is")%>
+              <%= __("Article") %>
+                <%= __(elem.name) %>
+                  <%= __(elem.adStatus) %>
+                    <%= __("and its price is") %>
                       <%= elem.price %>
-                        <%=__("Euro")%>
-                          <img class="image" src="images/<%= elem.img %>" />
-                          <span class="span">
-                            <%= elem.tags %>
-                          </span>
+                        <%= __("Euro") %>
+                          <% if (elem.img && elem.img !=="" ) { %>
+                            <img class="image" src="images/<%= elem.img %>" />
+                            <% } else { %>
+                              <img class="image" src="images/foto-error.jpg" />
+                              <% } %>
+                                <span class="span">
+                                  <%= elem.tags %>
+                                </span>
             </p>
-
-            <% } else if(elem.name) { %>
+            <% } else if (elem.name) { %>
               <p>
-                <%=__("Article")%>
+                <%= __("Article") %>
                   <%= elem.name %>
               </p>
-              <% } else if(elem.price){ %>
+              <% } else if (elem.price) { %>
                 <p>
-                  <%=__("and its price is")%>
+                  <%= __("and its price is") %>
                     <%= elem.price %>
-                      <%=__("Euro")%>
+                      <%= __("Euro") %>
                 </p>
                 <% } else { %>
-                  <img class="image" src="images/<%= elem.img %>" />
-                  <% } %>
-                    <% }) %>
+                  <% if (elem.img && elem.img !=="" ) { %>
+                    <img class="image" src="images/<%= elem.img %>" />
+                    <% } else { %>
+                      <img class="image" src="images/foto-error.jpg" />
+                      <% } %>
+                        <% } %>
+                          <% }) %>
       </div>
 
 
 
-  </main>
 
-  <% include footer.ejs %>
+    </main>
+
+    <% include footer.ejs %>
