@@ -19,6 +19,13 @@
   min-height: 100vh;
 }
 
+.layout-main-custom-background-image {
+  background-image: url("../images/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  height: calc(150vh);
+}
+
 .layout-title {
   border-bottom-width: 1px;
   position: sticky;
